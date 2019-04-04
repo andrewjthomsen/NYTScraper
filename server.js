@@ -1,35 +1,38 @@
 // Dependencies
-var express = require('express');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-var exphbs = require('express-handlebars');
+var express = require("express");
+var exphbs = require("express-handlebars");
+var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 
-// Express
+// Set up port
+var PORT = process.env.PORT || 8080;
+
+// Set up Express App
 var app = express();
 
-// Use morgan and body-parser
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+// Require routes
 
+
+// Designate our public folder as a static directory
+app.use(express.static("public"));
+
+// Connect Handlebars to Express app
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Use bodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Set hbs
-app.engine('handlebars', exphbs({
-    defaultLayout: 'main'
-}));
-app.set('view engine', 'handlebars');
+// Have every request go through route middleware
+app.use(routes);
 
-// Require routes
-var routes = require("./routes/html-routes.js");
+// Use the deployed database or local
 
-// Begin Routes
-app.use('/', routes);
+// Connect to the Mongo DB
 
 
-var port = process.env.PORT || 8080;
-// Listen on port 8080
-app.listen(port, function(){
-    console.log('Application is up and running on port 8080!');
-})
+// Listen on the port
+app.listen(PORT, function() {
+  console.log("Listening on port: " + PORT);
+});
