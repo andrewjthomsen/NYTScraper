@@ -25,7 +25,8 @@ app.use(routes);
 // Use the deployed database or local
 
 // Connect to the Mongo DB
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/dbname”;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/NYTScrape";
+// mongodb://<dbuser>:<dbpassword>@ds253831.mlab.com:53831/heroku_75svw2wg
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
@@ -35,3 +36,13 @@ mongoose.connect(MONGODB_URI);
 app.listen(PORT, function() {
   console.log("Listening on port: " + PORT);
 });
+//Things to do: TESTING MODE: Does everything work? Variables, info gets to db, 
+//making sure users can save notes, making sure hbs variables are pulling correctly ==============
+//make sure hbs variables match our db
+//connect to mongo as NYTScrape
+// Make sure info reaches db
+// Try to create a note and save it
+// check instructions to see if another view is required.
+// JS REACT DEVELOPER- drawing in js knowledge/ intermediate to advanced javascript coder as a current goal
+
+// -- memorize 5-7 array methods
