@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 8080;
 var app = express();
 
 // Require routes
-var routes = require("./routes/api")
+var router = require("./controllers/api.js");
 
 // Designate our public folder as a static directory
 app.use(express.static("public"));
@@ -20,7 +20,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Have every request go through route middleware
-app.use(routes);
+app.use(router);
 
 // Use the deployed database or local
 
