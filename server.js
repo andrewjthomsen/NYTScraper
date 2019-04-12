@@ -25,7 +25,7 @@ app.use(router);
 // Use the deployed database or local
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/NYTScrape";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrape";
 // mongodb://<dbuser>:<dbpassword>@ds253831.mlab.com:53831/heroku_75svw2wg
 
 // Connect to the Mongo DB
@@ -46,3 +46,7 @@ app.listen(PORT, function() {
 // JS REACT DEVELOPER- drawing in js knowledge/ intermediate to advanced javascript coder as a current goal
 
 // -- memorize 5-7 array methods
+// TODO FOR THURSDAY 04-11-19
+// NEED TO display articles to front end so users can comment on them. 
+// BEFORE SENDING HOMEPAGE VIEW, DO REQ TO MONGODB from html routes and
+// send back template with data in it

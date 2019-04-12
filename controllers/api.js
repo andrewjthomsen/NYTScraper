@@ -23,18 +23,35 @@ router.get("/scrape", function(req, res) {
         var headlines = [];
         //class="css-1vynn0q esl82me3"
         // Tells cheerio to only bring bag divs with the class of css-1vynn0q
-        $("h2.css-n2blzn.esl82me0").each(function (i, element) {// not correctly targeting articles
-            console.log(i,element)
+        $("h2.esl82me0").each(function (i, element) {// not correctly targeting articles
+            var headline = $(element).text()
+            var url = "https://www.nytimes.com"+$(element).closest("a").attr("href")
+            // console.log(i,element)
+            var summary = $(element).closest("a").find("p").text()
+            // console.log($(element).find("a"))
+            headlines[i] = $(element).closest("a").find("p").text()
+            
             // var headlineDiv = $(this).find('h2').text().trim();
             // var summary = $(this).find('p').text().trim();
             // var url = $(this).find('a').attr('href').trim();
+
             // object that gets pushed the Mongo db
-            // var mongoObj = {
-            //     headline: headlineDiv,
-            //     summery: summary,
-            //     url: url
-            // };
-            // db.headlines.push(mongoObj);
+            var mongoObj = {
+                headline: headline,
+                summary: summary,
+                url: url
+            };
+            if (summary.length >0){
+                db.Headline.create(mongoObj)  .then(function(dbArticle) {
+                    // View the added result in the console
+                    console.log(dbArticle);
+                  })
+                  .catch(function(err) {
+                    // If an error occurred, log it
+                    console.log(err);
+                  });;
+            }
+            
         });
         console.log(headlines)
         //return headlines;
