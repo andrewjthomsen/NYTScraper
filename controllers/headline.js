@@ -20,6 +20,12 @@ module.exports = {
         db.Headline.findOneAndUpdate({_id:req.params.id},{$set:req.body},{new:true}).then(function(dbHeadline){
             res.json(dbHeadline);
         })
+    },
+    // find one
+    findOne: function(req, res){
+        db.Headline.findOne({_id:req.params.id}).then(function() {
+            res.json(dbHeadline); 
+        })
     }
 }
 

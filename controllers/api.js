@@ -61,6 +61,19 @@ router.get("/scrape", function(req, res) {
         console.log(err)
     });
 });
+
+//=================
+router.get("/:id", function(req, res) {
+    console.log("here")
+    //db.note.find() grabs all notes
+    
+    db.Headline.find({_id:req.params.id}).then(function(dbHeadline){
+        var hbsObj = dbHeadline[0];
+        console.log(hbsObj);
+        res.render("headline", hbsObj)
+    })
+});
+
 //======================
 // Homepage to show all articles
 router.get("/", function(req, res) {

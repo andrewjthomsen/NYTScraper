@@ -1,0 +1,13 @@
+ <h1>This is working!</h1>
+ <div>
+      <h4><a href={{_id}}>{{headline}}</a></h4>
+      <p>{{summary}}</p>
+    </div>
+    <form>
+        <label for="comment">Write a comment.</label>
+        <input id="comment" type="text">
+        <button type="submit" id="createComment">Submit</button>
+    </form>
+    {{!-- OPTION # 2- when page loads create ajax request to load all comments/notes associated with the id in the url
+    and display them
+     --}}

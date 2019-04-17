@@ -8,3 +8,4 @@ $("#scrapeBTN").click(function(event) {
         res.json(headlines);
     })
 })
+// create a note botton or a create comment button
